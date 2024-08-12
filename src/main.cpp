@@ -134,9 +134,10 @@ MOD_EXPORT_FUNC void setup(CModInfo& info) {
 /// @return
 MOD_EXPORT_FUNC void late_load() {
     il2cpp_functions::Init();
-      BSML::Init();
+    getModConfig().Init(modInfo);
+    BSML::Init();
 
-    BSML::Register::RegisterMainMenu("Darth Maul", "Darth Maul Settings", "Configure some darth maul settings", DidActivate);
+    BSML::Register::RegisterMainMenu("Darth Maul", "Darth Maul", "Configure some darth maul settings", DidActivate);
 
     Logger.info("Installing hooks...");
 
