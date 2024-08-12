@@ -84,7 +84,7 @@ MAKE_HOOK_MATCH(PlayerTransforms_Update, &PlayerTransforms::Update, void, Player
             float yAverage = (ya + yb) / 2;
             float zAverage = (za + zb) / 2;
 
-            Quaternion rotation = UnityEngine::Quaternion::LookRotation(self->_rightHandTransform->get_position() - self->_leftHandTransform->get_position());
+            Quaternion rotation = UnityEngine::Quaternion::LookRotation(self->_rightHandTransform->get_position(), self->_leftHandTransform->get_position());
         
             self->_rightHandTransform->get_transform()->set_localPosition({xAverage, yAverage, zAverage});
             self->_rightHandTransform->get_transform()->set_eulerAngles(rotation.get_eulerAngles());
