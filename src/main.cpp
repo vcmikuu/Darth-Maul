@@ -58,13 +58,13 @@ MAKE_HOOK_MATCH(PlayerTransforms_Update, &PlayerTransforms::Update, void, Player
                     self->_leftHandTransform->get_eulerAngles().z,
                 });
             } else{
-                self->leftHandTransform->get_transform()->set_localPosition({
+                self->_leftHandTransform->get_transform()->set_localPosition({
                     self->_rightHandTransform->get_position().x,
                     self->_rightHandTransform->get_position().y,
                     self->_rightHandTransform->get_position().z
                 });
 
-                self->leftHandTransform->get_transform()->set_eulerAngles({
+                self->_leftHandTransform->get_transform()->set_eulerAngles({
                     self->_rightHandTransform->get_eulerAngles().x + 180,
                     self->_rightHandTransform->get_eulerAngles().y,
                     self->_rightHandTransform->get_eulerAngles().z,
