@@ -15,6 +15,7 @@
 #include "GlobalNamespace/Saber.hpp"
 #include "GlobalNamespace/SaberClashEffect.hpp"
 #include "scotland2/shared/modloader.h"
+#include "sombrero/shared/Vector3Utils.hpp"
 
 using namespace UnityEngine;
 using namespace GlobalNamespace;
@@ -84,7 +85,14 @@ MAKE_HOOK_MATCH(PlayerTransforms_Update, &PlayerTransforms::Update, void, Player
             float yAverage = (ya + yb) / 2;
             float zAverage = (za + zb) / 2;
 
-            Quaternion rotation = UnityEngine::Quaternion::LookRotation(self->_rightHandTransform->get_position(), self->_leftHandTransform->get_position());
+            Sombrero::FastVector3 rightHandPosition(self->_rightHandTransform->get_position());
+            Sombrero::FastVector3 leftHandPosition(self->_leftHandTransform->get_position());
+
+            Sombrero::FastVector3 direction = rightHandPosition - leftHandPosition;
+
+            UnityEngine::Vector3 unityDirection = direction.ToUnityVector3();
+
+            UnityEngine::Quaternion rotation = UnityEngine::Quaternion::LookRotation(unityDirection);
         
             self->_rightHandTransform->get_transform()->set_localPosition({xAverage, yAverage, zAverage});
             self->_rightHandTransform->get_transform()->set_eulerAngles(rotation.get_eulerAngles());
