@@ -85,14 +85,15 @@ MAKE_HOOK_MATCH(PlayerTransforms_Update, &PlayerTransforms::Update, void, Player
             float yAverage = (ya + yb) / 2;
             float zAverage = (za + zb) / 2;
 
+            
             Sombrero::FastVector3 rightHandPosition(self->_rightHandTransform->get_position());
             Sombrero::FastVector3 leftHandPosition(self->_leftHandTransform->get_position());
 
+
             Sombrero::FastVector3 direction = rightHandPosition - leftHandPosition;
 
-            UnityEngine::Vector3 unityDirection = direction.UnityVector3();
 
-            UnityEngine::Quaternion rotation = UnityEngine::Quaternion::LookRotation(unityDirection);
+            UnityEngine::Quaternion rotation = UnityEngine::Quaternion::LookRotation(direction);
         
             self->_rightHandTransform->get_transform()->set_localPosition({xAverage, yAverage, zAverage});
             self->_rightHandTransform->get_transform()->set_eulerAngles(rotation.get_eulerAngles());
