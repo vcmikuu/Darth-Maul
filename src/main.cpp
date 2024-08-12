@@ -35,7 +35,7 @@ float zr = 0.0f;
 MAKE_HOOK_MATCH(SaberClashEffect_LateUpdate, &SaberClashEffect::LateUpdate, void,
     SaberClashEffect* self
 ) {
-    if(getMainConfig().Active.GetValue()){
+    if(getModConfig().Active.GetValue()){
         return;
     } else{
         SaberClashEffect_LateUpdate(self);
@@ -43,9 +43,9 @@ MAKE_HOOK_MATCH(SaberClashEffect_LateUpdate, &SaberClashEffect::LateUpdate, void
 };
 
 MAKE_HOOK_MATCH(PlayerTransforms_Update, &PlayerTransforms::Update, void, PlayerTransforms* self) {
-    if(getMainConfig().Active.GetValue()){
-        if(getMainConfig().OneHand.GetValue()){
-            if(getMainConfig().LeftHanded.GetValue()){
+    if(getModConfig().Active.GetValue()){
+        if(getModConfig().OneHand.GetValue()){
+            if(getModConfig().LeftHanded.GetValue()){
                 self->_rightHandTransform->get_transform()->set_localPosition({
                     self->_leftHandTransform->get_position().x,
                     self->_leftHandTransform->get_position().y,
