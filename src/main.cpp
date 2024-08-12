@@ -85,7 +85,6 @@ MAKE_HOOK_MATCH(PlayerTransforms_Update, &PlayerTransforms::Update, void, Player
             float yAverage = (ya + yb) / 2;
             float zAverage = (za + zb) / 2;
 
-            
             Sombrero::FastVector3 rightHandPosition(self->_rightHandTransform->get_position());
             Sombrero::FastVector3 leftHandPosition(self->_leftHandTransform->get_position());
 
