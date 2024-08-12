@@ -90,7 +90,7 @@ MAKE_HOOK_MATCH(PlayerTransforms_Update, &PlayerTransforms::Update, void, Player
 
             Sombrero::FastVector3 direction = rightHandPosition - leftHandPosition;
 
-            UnityEngine::Vector3 unityDirection = direction.ToUnityVector3();
+            UnityEngine::Vector3 unityDirection = direction.UnityVector3();
 
             UnityEngine::Quaternion rotation = UnityEngine::Quaternion::LookRotation(unityDirection);
         
