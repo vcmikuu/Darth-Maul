@@ -32,24 +32,6 @@ float xr = 0.0f;
 float yr = 0.0f;
 float zr = 0.0f;
 
-static modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
-// Stores the ID and version of our mod, and is sent to
-// the modloader upon startup
-
-// Loads the config from disk using our modInfo, then returns it for use
-// other config tools such as config-utils don't use this config, so it can be
-// removed if those are in use
-Configuration &getConfig() {
-  static Configuration config(modInfo);
-  config.Load();
-  return config;
-}
-
-Logger& getLogger() {
-    static Logger* logger = new Logger(modInfo);
-    return *logger;
-}
-
 MAKE_HOOK_MATCH(SaberClashEffect_LateUpdate, &SaberClashEffect::LateUpdate, void,
     SaberClashEffect* self
 ) {

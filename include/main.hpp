@@ -24,6 +24,8 @@
 
 void DidActivate(HMUI::ViewController* self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling);
 
+Configuration &getConfig();
+
 /// @brief Stores the ID and version of our mod, and is sent to the modloader upon startup
 modloader::ModInfo modInfo{MOD_ID, VERSION, 0};
 
